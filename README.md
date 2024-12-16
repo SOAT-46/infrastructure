@@ -9,7 +9,30 @@ This repository provides a framework for managing infrastructure using Terraform
 * **Modules:** Reusable modules for common infrastructure components (e.g., VPCs, subnets, security groups, EC2 instances).
 * **Variables:** Customizable variables to control infrastructure configurations.
 * **Outputs:** Outputs to retrieve information about the provisioned infrastructure.
-* **Documentation:** Clear and concise documentation to guide users through the deployment process.
+
+## Project Structure
+
+```
+terraform/
+├── modules/
+│   ├── cluster/
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   ├── network/
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   └── node/
+│       ├── main.tf
+│       ├── outputs.tf
+│       └── variables.tf
+└── environments/
+      └── dev/
+           ├── modules.tf
+           ├── provider.tf
+           └── variables.tf
+```
 
 ## Prerequisites
 
@@ -31,11 +54,15 @@ This repository provides a framework for managing infrastructure using Terraform
 
 3. **Initialize Terraform:**
 
+To download the necessary provider plugins and set up your working directory, run:
+
    ```bash
    terraform init
    ```
 
 4. **Plan the infrastructure changes:**
+
+To preview the change that Terraform intends to make in your infrastructure, run:
 
    ```bash
    terraform plan
@@ -43,14 +70,36 @@ This repository provides a framework for managing infrastructure using Terraform
 
 5. **Apply the infrastructure changes:**
 
+To apply or modify the infrastructure, run:
+
    ```bash
    terraform apply
    ```
 
-5. **(Optional) Destroy the infrastructure**
+6. **(Optional) Destroy the infrastructure**
 
    ```bash
    terraform destroy
+   ```
+
+If you want to execute a target module, run:
+
+   ```bash
+   terraform apply -target=module.name
+   ```
+
+## Commands to improve the development and execution
+
+To format the terraform configuration files to the standard style, run:
+
+   ```bash
+   terraform fmt
+   ```
+
+To validate the configuration files, run:
+
+   ```bash
+   terraform validate
    ```
 
 ## Contributing
