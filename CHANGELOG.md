@@ -20,3 +20,7 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 - added GitHub Actions workflow for CI/CD
 - added the `EKS` module and related resources
 - created the base structure
+
+### Fixed
+
+- fixed CI/CD execution
