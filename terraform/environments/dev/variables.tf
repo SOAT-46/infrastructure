@@ -4,12 +4,6 @@ variable "region" {
   default     = "us-east-1"
 }
 
-variable "profile" {
-  description = "The AWS profile"
-  type        = string
-  default     = "default"
-}
-
 variable "cluster_name" {
   description = "The name of the EKS cluster"
   type        = string
@@ -17,21 +11,21 @@ variable "cluster_name" {
 }
 
 variable "node_max_size" {
-  type = number
+  type        = number
   description = "The node max size for the EKS worknodes"
-  default = 4
+  default     = 4
 }
 
 variable "node_min_size" {
-  type = number
+  type        = number
   description = "The node min size for the EKS worknodes"
-  default = 2
+  default     = 2
 }
 
 variable "node_desired_size" {
-  type = number
+  type        = number
   description = "The node desired size for the EKS worknodes"
-  default = 2
+  default     = 2
 }
 
 variable "role_arn" {
