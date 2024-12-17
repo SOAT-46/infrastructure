@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/terraform,terragrunt
 # Edit at https://www.toptal.com/developers/gitignore?templates=terraform,terragrunt
 
+### General ###
+**/.env
+
 ### Terraform ###
 # Local .terraform directories
 **/.terraform/*
