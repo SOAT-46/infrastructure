@@ -23,3 +23,14 @@ variable "role_arn" {
   description = "The ARN of the IAM role"
   type        = string
 }
+
+variable "vpc_id" {
+  description = "The VPC ID for the cluster"
+  type = string
+}
+
+variable "cidr" {
+  description = "The CIDR for ingress and egress"
+  type = string
+  default = "0.0.0.0/0"
+}
