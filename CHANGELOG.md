@@ -24,4 +24,4 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 ### Fixed
 
 - fixed CI/CD execution
-- fixed the configuration between `EKS` and `VPC`
+- fixed the configuration between `EKS` and `VPC` to use the default account VPC
