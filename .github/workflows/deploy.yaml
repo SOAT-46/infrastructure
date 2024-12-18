@@ -9,9 +9,45 @@ on:
       - main
 
 jobs:
-  terraform:
-    name: Terraform
+  terraform-quality:
+    name: Terraform quality code
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.10.2
+
+      - name: Terraform Init
+        id: init
+        working-directory: terraform/environments/dev
+        run: terraform init
+
+      - name: Terraform Format Check
+        id: fmt
+        working-directory: terraform/environments/dev
+        run: terraform fmt -check
+
+      - name: Terraform Validate
+        id: validate
+        working-directory: terraform/environments/dev
+        run: terraform validate
+  terraform-plan:
+    name: Terraform Plan
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Terraform Plan
+        id: plan
+        working-directory: terraform/environments/dev
+        run: terraform plan -input=false -var 'role_arn=arn:aws:iam::830543321077:role/LabRole'
+  terraform-deploy:
+    name: Terraform Apply
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -34,24 +70,7 @@ jobs:
         working-directory: terraform/environments/dev
         run: terraform init
 
-      - name: Terraform Format Check
-        id: fmt
-        working-directory: terraform/environments/dev
-        run: terraform fmt -check
-
-      - name: Terraform Validate
-        id: validate
-        working-directory: terraform/environments/dev
-        run: terraform validate
-
-      - name: Terraform Plan
-        id: plan
-#        if: github.event_name == 'pull_request'
-        working-directory: terraform/environments/dev
-        run: terraform plan -input=false -var 'role_arn=arn:aws:iam::830543321077:role/LabRole'
-
       - name: Terraform Apply
         id: apply
-#        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         working-directory: terraform/environments/dev
         run: terraform apply -auto-approve -input=false -var 'role_arn=arn:aws:iam::830543321077:role/LabRole'
