@@ -28,7 +28,8 @@ variable "node_desired_size" {
   default     = 2
 }
 
-variable "role_arn" {
-  description = "The ARN of the IAM role"
+variable "cidr" {
+  description = "The CIDR for ingress and egress"
   type        = string
+  default     = "0.0.0.0/0"
 }
