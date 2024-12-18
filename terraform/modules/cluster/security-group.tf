@@ -6,7 +6,7 @@ resource "aws_security_group" "eks_sg_ingress_rule" {
     description = "Allow HTTP traffic"
     from_port = 80
     to_port = 80
-    protocol = "tpc"
+    protocol = "tcp"
     cidr_blocks = [var.cidr]
   }
 
