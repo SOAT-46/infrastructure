@@ -3,16 +3,6 @@ variable "cluster_name" {
   type        = string
 }
 
-variable "private_subnet_1a" {
-  description = "The subnet ID of the private subnet 1a"
-  type        = string
-}
-
-variable "private_subnet_1b" {
-  description = "The subnet ID of the private subnet 1b"
-  type        = string
-}
-
 variable "node_desired_size" {
   type = number
   description = "The node desired size for the EKS worknodes"
@@ -47,3 +37,9 @@ variable "role_arn" {
   description = "The ARN of the IAM role"
   type        = string
 }
+
+variable "subnets" {
+  description = "The subnets for the EKS"
+  type = list(string)
+}
+

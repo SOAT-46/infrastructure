@@ -28,7 +28,14 @@ variable "node_desired_size" {
   default     = 2
 }
 
-variable "role_arn" {
-  description = "The ARN of the IAM role"
+variable "cidr" {
+  description = "The CIDR to use to find the VPC"
   type        = string
+  default     = "172.31.0.0/16"
+}
+
+variable "account_id" {
+  description = "The AWS Account ID"
+  type        = string
+  default     = "830543321077"
 }

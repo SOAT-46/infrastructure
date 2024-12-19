@@ -17,10 +17,11 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 
 ### Added
 
-- added GitHub Actions workflow for CI/CD
-- added the `EKS` module and related resources
 - created the base structure
+- added the `EKS` module and related resources
+- added GitHub Actions workflow for CI/CD
 
 ### Fixed
 
 - fixed CI/CD execution
+- fixed the configuration between `EKS` and `VPC` to use the default account VPC
