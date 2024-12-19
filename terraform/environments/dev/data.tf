@@ -11,7 +11,7 @@ data "aws_subnets" "subnets" {
 
 data "aws_subnet" "subnet" {
   for_each = toset(data.aws_subnets.subnets.ids)
-  id       = each.value
+     id       = each.value
 }
 
 data "aws_iam_role" "labrole" {
